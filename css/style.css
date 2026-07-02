@@ -636,3 +636,159 @@ footer {
 }
     
 }
+
+/* ==========================================================================
+   11. PROJECT VIDEO LINK CARDS
+   ========================================================================== */
+
+.video-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: #262626;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: opacity var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.video-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+    pointer-events: none;
+}
+
+.video-card:hover {
+    border-color: var(--color-text);
+    background: #303030;
+    opacity: 0.9;
+}
+
+.video-card-wide {
+    aspect-ratio: 16 / 9;
+}
+
+.video-card-hero {
+    min-height: 320px;
+}
+
+.video-card-short {
+    aspect-ratio: 9 / 16;
+    min-height: 280px;
+}
+
+.video-card-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.video-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.75rem;
+    height: 3.75rem;
+    border: 1px solid var(--color-text-muted);
+    border-radius: 999px;
+    color: var(--color-text);
+    font-size: 1.35rem;
+    line-height: 1;
+    padding-left: 0.15rem;
+}
+
+.video-label {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+}
+
+.shorts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg);
+}
+
+.project-narrative p + p {
+    margin-top: var(--space-md);
+}
+
+@media (max-width: 900px) {
+    .shorts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .video-card-hero {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .shorts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .video-card-short {
+        max-width: 360px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+
+/* ==========================================================================
+   12. PROJECT YOUTUBE EMBEDS
+   ========================================================================== */
+
+.youtube-embed {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: #262626;
+}
+
+.youtube-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+.youtube-embed-wide {
+    aspect-ratio: 16 / 9;
+}
+
+.youtube-embed-hero {
+    min-height: 320px;
+}
+
+.youtube-embed-short {
+    aspect-ratio: 9 / 16;
+    min-height: 280px;
+}
+
+@media (max-width: 900px) {
+    .youtube-embed-hero {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .youtube-embed-short {
+        max-width: 360px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
