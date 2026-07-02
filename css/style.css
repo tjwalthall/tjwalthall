@@ -545,6 +545,12 @@ footer {
     gap: var(--space-lg);
 }
 
+.asset-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
 .asset-wrapper {
     width: 100%;
     overflow: hidden;
@@ -651,6 +657,10 @@ footer {
     .asset-grid-2 {
         grid-template-columns: 1fr 1fr;
     }
+
+    .asset-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* ==========================================================================
@@ -684,6 +694,10 @@ footer {
 @media (max-width: 900px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .asset-grid-3 {
+        grid-template-columns: 1fr;
     }
 
     .controls {
