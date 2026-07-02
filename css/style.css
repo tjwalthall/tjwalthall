@@ -1,0 +1,638 @@
+/* ==========================================================================
+   01. DESIGN TOKENS
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root,
+:root[data-theme="dark"] {
+    --color-bg: #121212;
+    --color-text: #eeeeee;
+    --color-text-muted: #888888;
+    --color-border: #2a2a2a;
+    --color-card-bg: #000000;
+    --color-accent: #00f0ff;
+
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --text-xs: 0.75rem;
+    --text-sm: 0.8rem;
+    --text-base: 0.85rem;
+    --text-lg: 1.05rem;
+    --text-xl: 1.25rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 2.5rem;
+    --space-3xl: 3rem;
+    --space-4xl: 4rem;
+    --space-5xl: 5rem;
+    --space-6xl: 6rem;
+
+    --site-max-width: 1200px;
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+}
+
+:root[data-theme="light"] {
+    --color-bg: #ffffff;
+    --color-text: #111111;
+    --color-text-muted: #666666;
+    --color-border: #e5e5e5;
+    --color-card-bg: #000000;
+    --color-accent: #0000ff;
+}
+
+/* Backwards-compatible aliases */
+:root {
+    --bg-color: var(--color-bg);
+    --text-color: var(--color-text);
+    --text-muted: var(--color-text-muted);
+    --border-color: var(--color-border);
+    --accent-blue: var(--color-accent);
+}
+
+/* ==========================================================================
+   02. RESET / BASE
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: var(--color-bg);
+}
+
+body {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: var(--space-xl);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    letter-spacing: 0.08em;
+    transition: background-color var(--transition-base), color var(--transition-base);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+}
+
+/* ==========================================================================
+   03. GLOBAL LAYOUT
+   ========================================================================== */
+
+header,
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+header {
+    margin-bottom: var(--space-2xl);
+}
+
+nav {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-4xl);
+    font-size: var(--text-base);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: var(--space-4xl);
+    margin-top: var(--space-6xl);
+}
+
+/* ==========================================================================
+   04. NAVIGATION / LINKS
+   ========================================================================== */
+
+.logo,
+.back-btn {
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.nav-links a,
+.toggle-theme,
+.theme-toggle {
+    color: var(--color-text);
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    letter-spacing: inherit;
+}
+
+.nav-links a:hover,
+.toggle-theme:hover,
+.theme-toggle:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   05. BUTTONS
+   ========================================================================== */
+
+.controls {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-3xl);
+    text-transform: uppercase;
+}
+
+.btn,
+.footer-back {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all var(--transition-fast);
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+}
+
+.btn:hover,
+.btn.active {
+    border-color: var(--color-text);
+    color: var(--color-text);
+}
+
+.footer-back {
+    padding: var(--space-sm) var(--space-xl);
+    color: var(--color-text);
+}
+
+.footer-back:hover {
+    border-color: var(--color-text);
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* ==========================================================================
+   06. INDEX / PORTFOLIO GRID
+   ========================================================================== */
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.project-card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-card-bg);
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: opacity var(--transition-base);
+}
+
+.project-card:hover img {
+    opacity: 0.35;
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.meta-top,
+.meta-body {
+    opacity: 0;
+    transform: translateY(6px);
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+
+.project-card:hover .meta-top,
+.project-card:hover .meta-body {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.meta-top {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0, 240, 255, 0.7);
+    font-weight: 500;
+}
+
+.meta-top .dynamic-id {
+    opacity: 0.55;
+}
+
+.meta-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.meta-client {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.meta-title {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.meta-details {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: var(--text-xs);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   07. ABOUT PAGE
+   ========================================================================== */
+
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4xl);
+    margin-bottom: var(--space-5xl);
+}
+
+.meta-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    font-size: var(--text-sm);
+}
+
+.meta-line {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: var(--space-xs);
+}
+
+.meta-label {
+    color: var(--color-text-muted);
+}
+
+.bio-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.bio-text strong {
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   08. TABLES / AWARDS
+   ========================================================================== */
+
+.awards-section {
+    margin-bottom: var(--space-5xl);
+}
+
+.section-header {
+    border-bottom: 1px solid var(--color-text);
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.awards-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    text-align: left;
+}
+
+.awards-table-header {
+    border-bottom: 2px solid var(--color-text);
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+}
+
+.awards-table-header th {
+    padding-bottom: var(--space-xs);
+}
+
+.awards-table tr {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.awards-table td,
+.awards-table th {
+    padding: var(--space-sm) 0;
+    vertical-align: top;
+}
+
+.col-show {
+    width: 25%;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.col-award {
+    width: 30%;
+}
+
+.col-proj {
+    width: 25%;
+    color: var(--color-text-muted);
+}
+
+.col-brand {
+    width: 20%;
+    text-transform: uppercase;
+}
+/* ==========================================================================
+   09. PROJECT DETAIL PAGES
+   ========================================================================== */
+
+.project-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-6xl);
+    align-items: start;
+    min-height: 100vh;
+}
+
+.project-header-block {
+    margin-bottom: var(--space-xl);
+    text-transform: uppercase;
+}
+
+.project-client-label {
+    color: var(--color-text-muted);
+    font-size: 10px;
+    margin-bottom: 0.25rem;
+}
+
+.project-main-title {
+    color: var(--color-text);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.project-narrative {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.narrative-block h3 {
+    margin-bottom: 0.25rem;
+    color: var(--color-accent);
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.project-assets-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+.project-copy-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-xl) 0;
+}
+
+.project-copy-block h2 {
+    color: var(--color-text);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.project-copy-block p {
+    max-width: 620px;
+    color: var(--color-text);
+    font-size: var(--text-base);
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.project-copy-wide p {
+    max-width: 900px;
+}
+
+.asset-group {
+    width: 100%;
+}
+
+.asset-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+.asset-wrapper {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-card-bg);
+}
+
+.asset-wrapper img,
+.asset-wrapper video,
+.asset-wrapper iframe {
+    width: 100%;
+    display: block;
+    border: 0;
+}
+
+.asset-wrapper img,
+.asset-wrapper video {
+    height: auto;
+}
+
+/* ----------------------------------------------------
+   Subtle media interaction
+---------------------------------------------------- */
+
+.asset-wrapper img,
+.asset-wrapper video,
+.asset-wrapper iframe {
+    transition: opacity var(--transition-fast);
+}
+
+.asset-wrapper:hover img,
+.asset-wrapper:hover video,
+.asset-wrapper:hover iframe {
+    opacity: 0.92;
+}
+
+.video-embed {
+    aspect-ratio: 16 / 9;
+}
+
+.video-embed iframe {
+    height: 100%;
+}
+
+.asset-caption {
+    margin-top: var(--space-sm);
+    color: var(--color-text-muted);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+@media (min-width: 900px) {
+    .project-copy-block {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+
+    .asset-grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ==========================================================================
+   10. RESPONSIVE
+   ========================================================================== */
+
+@media (min-width: 768px) {
+    .about-layout {
+        grid-template-columns: 350px 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-container {
+        grid-template-columns: 340px 1fr;
+        gap: var(--space-5xl);
+    }
+
+    .project-sidebar {
+        position: sticky;
+        top: var(--space-xl);
+    }
+}
+
+@media (max-width: 1200px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: var(--space-md);
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .awards-table tr {
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-md) 0;
+    }
+
+    .awards-table-header {
+        display: none;
+    }
+
+    .col-show,
+    .col-award,
+    .col-proj,
+    .col-brand {
+        width: 100%;
+        padding: 0.25rem 0;
+    }
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+    
+}
