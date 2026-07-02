@@ -161,6 +161,8 @@ footer {
 
 .controls {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     gap: var(--space-sm);
     margin-bottom: var(--space-3xl);
     text-transform: uppercase;
@@ -190,6 +192,42 @@ footer {
     color: var(--color-text);
 }
 
+.search-label {
+    margin-left: auto;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+}
+
+.project-search {
+    width: clamp(180px, 24vw, 320px);
+    min-height: 2.45rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+    transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.project-search::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.65;
+}
+
+.project-search:focus {
+    border-color: var(--color-text);
+}
+
+.project-search::-webkit-search-decoration,
+.project-search::-webkit-search-cancel-button {
+    appearance: none;
+}
+
 .footer-back {
     padding: var(--space-sm) var(--space-xl);
     color: var(--color-text);
@@ -209,6 +247,21 @@ footer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-lg);
+}
+
+
+.project-card[hidden] {
+    display: none;
+}
+
+.empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 12rem;
+    border: 1px dashed var(--color-border);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
 }
 
 .project-card {
@@ -587,6 +640,20 @@ footer {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .controls {
+        align-items: stretch;
+    }
+
+    .search-label {
+        width: 100%;
+        margin-left: 0;
+        margin-top: var(--space-xs);
+    }
+
+    .project-search {
+        width: 100%;
+    }
 }
 
 @media (max-width: 600px) {
@@ -598,6 +665,20 @@ footer {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-md);
+    }
+
+    .nav-links,
+    .controls {
+        width: 100%;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: left;
     }
 
     .portfolio-grid {
@@ -621,10 +702,12 @@ footer {
         width: 100%;
         padding: 0.25rem 0;
     }
+}
 
 /* ==========================================================================
    ACCESSIBILITY
    ========================================================================== */
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -633,8 +716,6 @@ footer {
         transition: none !important;
         scroll-behavior: auto !important;
     }
-}
-    
 }
 
 /* ==========================================================================
@@ -738,55 +819,6 @@ footer {
     }
 
     .video-card-short {
-        max-width: 360px;
-        width: 100%;
-        margin: 0 auto;
-    }
-}
-
-
-/* ==========================================================================
-   12. PROJECT YOUTUBE EMBEDS
-   ========================================================================== */
-
-.youtube-embed {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    background: #262626;
-}
-
-.youtube-embed iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    border: 0;
-}
-
-.youtube-embed-wide {
-    aspect-ratio: 16 / 9;
-}
-
-.youtube-embed-hero {
-    min-height: 320px;
-}
-
-.youtube-embed-short {
-    aspect-ratio: 9 / 16;
-    min-height: 280px;
-}
-
-@media (max-width: 900px) {
-    .youtube-embed-hero {
-        min-height: 0;
-    }
-}
-
-@media (max-width: 600px) {
-    .youtube-embed-short {
         max-width: 360px;
         width: 100%;
         margin: 0 auto;

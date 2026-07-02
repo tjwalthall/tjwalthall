@@ -3,8 +3,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!grid) return;
 
-    const buttons = document.querySelectorAll('.controls .btn');
-    let cards = Array.from(grid.querySelectorAll('.project-card'));
+    const buttons = Array.from(document.querySelectorAll('.controls .btn'));
+    const searchInput = document.getElementById('projectSearch');
+    const cards = Array.from(grid.querySelectorAll('.project-card'));
+
+    let currentFilter = 'all';
+    let currentSearch = '';
+    let currentOrder = shuffleArray([...cards]);
+
+    const emptyState = document.createElement('div');
+    emptyState.className = 'empty-state';
+    emptyState.textContent = 'NO PROJECTS FOUND';
+    emptyState.hidden = true;
+    grid.after(emptyState);
+
+    cards.forEach(card => {
+        const image = card.querySelector('img');
+        const searchableText = [
+            card.dataset.category,
+            card.getAttribute('href'),
+            image ? image.alt : '',
+            card.textContent
+        ].join(' ').toLowerCase();
+
+        card.dataset.search = searchableText;
+    });
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -15,27 +38,39 @@ document.addEventListener('DOMContentLoaded', () => {
         return array;
     }
 
-    function renderMatrix(filterType = 'all', triggerShuffle = false) {
-        if (triggerShuffle) {
-            cards = shuffleArray(cards);
+    function renderMatrix({ shuffle = false } = {}) {
+        if (shuffle) {
+            currentOrder = shuffleArray([...currentOrder]);
         }
 
-        cards.forEach(card => grid.appendChild(card));
+        currentOrder.forEach(card => grid.appendChild(card));
 
-        let sequentialID = 1;
+        let visibleCount = 0;
 
-        cards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            const idSpan = card.querySelector('.dynamic-id');
-            const isVisible = filterType === 'all' || category === filterType;
+        currentOrder.forEach(card => {
+            const matchesFilter =
+                currentFilter === 'all' ||
+                card.dataset.category === currentFilter;
 
-            card.style.display = isVisible ? 'block' : 'none';
+            const matchesSearch =
+                currentSearch === '' ||
+                card.dataset.search.includes(currentSearch);
 
-            if (isVisible && idSpan) {
-                idSpan.textContent = `ID: ${sequentialID.toString().padStart(2, '0')}`;
-                sequentialID++;
+            const isVisible = matchesFilter && matchesSearch;
+
+            card.hidden = !isVisible;
+
+            if (isVisible) {
+                visibleCount++;
+
+                const idSpan = card.querySelector('.dynamic-id');
+                if (idSpan) {
+                    idSpan.textContent = `ID: ${String(visibleCount).padStart(2, '0')}`;
+                }
             }
         });
+
+        emptyState.hidden = visibleCount > 0;
     }
 
     buttons.forEach(button => {
@@ -43,12 +78,26 @@ document.addEventListener('DOMContentLoaded', () => {
             buttons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
-            const selectedFilter = button.getAttribute('data-filter');
-            const shouldShuffle = button.id === 'shuffleBtn';
+            currentFilter = button.dataset.filter || 'all';
 
-            renderMatrix(selectedFilter, shouldShuffle);
+            renderMatrix({ shuffle: button.id === 'shuffleBtn' });
         });
     });
 
-    renderMatrix('all', true);
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            currentSearch = searchInput.value.trim().toLowerCase();
+            renderMatrix();
+        });
+
+        searchInput.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                searchInput.value = '';
+                currentSearch = '';
+                renderMatrix();
+            }
+        });
+    }
+
+    renderMatrix();
 });
