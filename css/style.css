@@ -32,7 +32,7 @@
     --space-5xl: 5rem;
     --space-6xl: 6rem;
 
-    --site-max-width: 1200px;
+    --site-max-width: 1400px;
     --transition-fast: 0.2s ease;
     --transition-base: 0.3s ease;
 }
@@ -685,13 +685,21 @@ footer {
 
 @media (min-width: 1024px) {
     .project-container {
-        grid-template-columns: 340px 1fr;
-        gap: var(--space-5xl);
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: var(--space-4xl);
     }
 
     .project-sidebar {
         position: sticky;
         top: var(--space-xl);
+    }
+}
+
+
+
+@media (min-width: 1400px) {
+    .project-container {
+        grid-template-columns: 310px minmax(0, 1fr);
     }
 }
 
