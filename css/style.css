@@ -1021,3 +1021,28 @@ footer {
         margin: 0 auto;
     }
 }
+
+/* ----------------------------------------------------
+   Single social / portrait video asset
+   Use when one 4:5 or 9:16 video should not span full width
+---------------------------------------------------- */
+
+.social-single {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.social-single .asset-group {
+    width: min(460px, 100%);
+}
+
+@media (max-width: 600px) {
+    .social-single {
+        justify-content: center;
+    }
+
+    .social-single .asset-group {
+        width: min(420px, 100%);
+    }
+}
