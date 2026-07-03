@@ -551,6 +551,12 @@ footer {
     gap: var(--space-lg);
 }
 
+.asset-grid-4 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
 .asset-wrapper {
     width: 100%;
     overflow: hidden;
@@ -661,6 +667,10 @@ footer {
     .asset-grid-3 {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .asset-grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 /* ==========================================================================
@@ -696,7 +706,8 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .asset-grid-3 {
+    .asset-grid-3,
+    .asset-grid-4 {
         grid-template-columns: 1fr;
     }
 
