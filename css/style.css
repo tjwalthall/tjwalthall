@@ -796,8 +796,82 @@ footer {
     }
 }
 
+
 /* ==========================================================================
-   11. PROJECT VIDEO LINK CARDS
+   11. SOCIAL / VERTICAL VIDEO ASSETS
+   ========================================================================== */
+
+.social-grid,
+.social-grid-2,
+.social-grid-3,
+.social-grid-4 {
+    display: grid;
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+.social-grid,
+.social-grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.social-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.social-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.asset-social-4x5,
+.asset-social-9x16 {
+    aspect-ratio: 4 / 5;
+}
+
+.asset-social-9x16 {
+    aspect-ratio: 9 / 16;
+}
+
+.asset-social-4x5 img,
+.asset-social-4x5 video,
+.asset-social-4x5 iframe,
+.asset-social-9x16 img,
+.asset-social-9x16 video,
+.asset-social-9x16 iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 900px) {
+    .social-grid,
+    .social-grid-3,
+    .social-grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .social-grid,
+    .social-grid-2,
+    .social-grid-3,
+    .social-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .asset-social-4x5,
+    .asset-social-9x16,
+    .video-card-social-4x5,
+    .video-card-social-9x16 {
+        max-width: 420px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* ==========================================================================
+   12. PROJECT VIDEO LINK CARDS
    ========================================================================== */
 
 .video-card {
@@ -835,8 +909,14 @@ footer {
     min-height: 320px;
 }
 
-.video-card-short {
+.video-card-short,
+.video-card-social-9x16 {
     aspect-ratio: 9 / 16;
+    min-height: 280px;
+}
+
+.video-card-social-4x5 {
+    aspect-ratio: 4 / 5;
     min-height: 280px;
 }
 
@@ -896,8 +976,15 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .video-card-short {
+    .video-card-short,
+    .video-card-social-9x16 {
         max-width: 360px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .video-card-social-4x5 {
+        max-width: 420px;
         width: 100%;
         margin: 0 auto;
     }

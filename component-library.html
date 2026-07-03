@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TJ Walthall // Component Library</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .library-section {
+            margin-bottom: var(--space-6xl);
+        }
+
+        .library-note {
+            max-width: 760px;
+            margin-bottom: var(--space-2xl);
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .library-label {
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-xs);
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+        }
+
+        .library-demo-box {
+            border: 1px dashed var(--color-border);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="back-btn">[ ← Return to Index ]</a>
+        <button class="theme-toggle" type="button">[ Toggle Light/Dark ]</button>
+    </nav>
+
+    <main>
+        <section class="library-section">
+            <div class="project-header-block">
+                <div class="project-client-label">SYSTEM</div>
+                <h1 class="project-main-title">COMPONENT LIBRARY</h1>
+            </div>
+            <p class="library-note">
+                A working reference page for the reusable pieces across the portfolio: navigation, project cards, project detail layouts, media embeds, image grids, captions, video link cards, copy blocks, buttons, search, awards tables, and responsive short-form video grids.
+            </p>
+        </section>
+
+        <section class="library-section">
+            <h2 class="section-header">Navigation</h2>
+            <div class="library-demo-box">
+                <header>
+                    <a href="index.html" class="logo">TJ_WALTHALL</a>
+                    <div class="nav-links">
+                        <a href="index.html">Work</a>
+                        <a href="about.html">About</a>
+                        <a href="mailto:hello@example.com">Contact</a>
+                    </div>
+                </header>
+                <nav>
+                    <a href="index.html" class="back-btn">[ ← Return to Index ]</a>
+                    <button class="theme-toggle" type="button">[ Toggle Light/Dark ]</button>
+                </nav>
+            </div>
+        </section>
+
+        <section class="library-section">
+            <h2 class="section-header">Controls + Search</h2>
+            <div class="controls">
+                <button class="btn active" type="button">All</button>
+                <button class="btn" type="button">Film</button>
+                <button class="btn" type="button">Integrated</button>
+                <button class="btn" type="button">Digital</button>
+                <label class="search-label" for="project-search">Search</label>
+                <input id="project-search" class="project-search" type="search" placeholder="Project / Client" />
+            </div>
+        </section>
+
+        <section class="library-section">
+            <h2 class="section-header">Portfolio Cards</h2>
+            <div class="portfolio-grid">
+                <a class="project-card" href="#">
+                    <img src="media/thumb-c4-athletes.webp" alt="Sample portfolio thumbnail" />
+                    <div class="project-overlay">
+                        <div class="meta-top">
+                            <span>C4 Energy</span>
+                            <span class="dynamic-id">x1</span>
+                        </div>
+                        <div class="meta-body">
+                            <div class="meta-client">C4 Energy</div>
+                            <div class="meta-title">We Are All Athletes</div>
+                            <div class="meta-details">Integrated Content Platform</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="project-card" href="#">
+                    <img src="media/thumb-google-starwars.webp" alt="Sample portfolio thumbnail" />
+                    <div class="project-overlay">
+                        <div class="meta-top">
+                            <span>Google</span>
+                            <span class="dynamic-id">x2</span>
+                        </div>
+                        <div class="meta-body">
+                            <div class="meta-client">Google</div>
+                            <div class="meta-title">Lightsaber Escape</div>
+                            <div class="meta-details">Interactive Mobile Experience</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="project-card" href="#">
+                    <img src="media/thumb-samsung-note4.webp" alt="Sample portfolio thumbnail" />
+                    <div class="project-overlay">
+                        <div class="meta-top">
+                            <span>Samsung</span>
+                            <span class="dynamic-id">x3</span>
+                        </div>
+                        <div class="meta-body">
+                            <div class="meta-client">Samsung</div>
+                            <div class="meta-title">Samsung Note 4</div>
+                            <div class="meta-details">Digital Video</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="project-card" href="#">
+                    <img src="media/thumb-mobil1.webp" alt="Sample portfolio thumbnail" />
+                    <div class="project-overlay">
+                        <div class="meta-top">
+                            <span>Mobil 1</span>
+                            <span class="dynamic-id">x4</span>
+                        </div>
+                        <div class="meta-body">
+                            <div class="meta-client">Mobil 1</div>
+                            <div class="meta-title">Cruiser to Cab</div>
+                            <div class="meta-details">Film + Print</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="library-section">
+            <h2 class="section-header">Project Detail Layout</h2>
+            <div class="project-container">
+                <aside class="project-sidebar">
+                    <div class="project-header-block">
+                        <div class="project-client-label">IBM</div>
+                        <h1 class="project-main-title">THE BIRTH OF WATSON AI</h1>
+                    </div>
+
+                    <div class="meta-sidebar">
+                        <div class="meta-line"><span class="meta-label">Client</span><span>IBM</span></div>
+                        <div class="meta-line"><span class="meta-label">Agency</span><span>Ogilvy New York</span></div>
+                        <div class="meta-line"><span class="meta-label">Format</span><span>Brand Film</span></div>
+                        <div class="meta-line"><span class="meta-label">Type</span><span>Brief</span></div>
+                    </div>
+
+                    <div class="project-narrative">
+                        <div class="narrative-block">
+                            <h3>Overview</h3>
+                            <p>Short overview copy sits here. This block is designed for project context, strategic framing, and the story behind the work.</p>
+                        </div>
+                        <div class="narrative-block">
+                            <h3>Role</h3>
+                            <p>Senior Writer</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <section class="project-assets-stack">
+                    <div class="youtube-embed youtube-embed-hero">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Sample video" allowfullscreen></iframe>
+                    </div>
+                    <div class="asset-caption">Hero Film // 16:9 Embed</div>
+
+                    <div class="project-copy-block">
+                        <h2>Supporting Copy Block</h2>
+                        <p>This two-column copy module works well between asset sections when a project needs a little extra context, a quote, a campaign line, or a short explanation before the next media group.</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="library-section">
+            <h2 class="section-header">Image Grids</h2>
+            <div class="asset-grid-2">
+                <div class="asset-group">
+                    <div class="asset-wrapper"><img src="media/c4-athletes-01.webp" alt="Sample asset" /></div>
+                    <div class="asset-caption">Two-Up Grid // Image One</div>
+                </div>
+                <div class="asset-group">
+                    <div class="asset-wrapper"><img src="media/c4-athletes-02.webp" alt="Sample asset" /></div>
+                    <div class="asset-caption">Two-Up Grid // Image Two</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="library-section">
+            <h2 class="section-header">Video Link Cards</h2>
+            <div class="asset-grid-2">
+                <a class="video-card video-card-wide" href="#">
+                    <div class="video-card-inner">
+                        <span class="video-play">▶</span>
+                        <span class="video-label">Watch Film</span>
+                    </div>
+                </a>
+                <a class="video-card video-card-wide" href="#">
+                    <div class="video-card-inner">
+                        <span class="video-play">▶</span>
+                        <span class="video-label">Case Study</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="library-section">
+            <h2 class="section-header">Social Video Assets</h2>
+            <p class="library-note">
+                Use <code>asset-social-4x5</code> for Instagram-style 4:5 posts and <code>asset-social-9x16</code> for Reels/TikTok-style vertical videos. Choose the grid count based on the number of assets.
+            </p>
+            <div class="social-grid-2">
+                <div class="asset-group">
+                    <div class="asset-wrapper asset-social-4x5">
+                        <video src="media/sample-social-4x5.mp4" autoplay muted loop playsinline></video>
+                    </div>
+                    <div class="asset-caption">Social Video // 4:5</div>
+                </div>
+                <div class="asset-group">
+                    <div class="asset-wrapper asset-social-9x16">
+                        <video src="media/sample-social-9x16.mp4" autoplay muted loop playsinline></video>
+                    </div>
+                    <div class="asset-caption">Social Video // 9:16</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="library-section">
+            <h2 class="section-header">Social Video Link Cards</h2>
+            <div class="social-grid-4">
+                <a class="video-card video-card-social-4x5" href="#"><div class="video-card-inner"><span class="video-play">▶</span><span class="video-label">4:5 Social 01</span></div></a>
+                <a class="video-card video-card-social-4x5" href="#"><div class="video-card-inner"><span class="video-play">▶</span><span class="video-label">4:5 Social 02</span></div></a>
+                <a class="video-card video-card-social-9x16" href="#"><div class="video-card-inner"><span class="video-play">▶</span><span class="video-label">9:16 Reel 01</span></div></a>
+                <a class="video-card video-card-social-9x16" href="#"><div class="video-card-inner"><span class="video-play">▶</span><span class="video-label">9:16 Reel 02</span></div></a>
+            </div>
+        </section>
+
+        <section class="library-section">
+            <h2 class="section-header">Awards Table</h2>
+            <table class="awards-table">
+                <thead class="awards-table-header">
+                    <tr>
+                        <th class="col-show">Show</th>
+                        <th class="col-award">Award</th>
+                        <th class="col-proj">Project</th>
+                        <th class="col-brand">Brand</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-show">Cannes Lions</td>
+                        <td class="col-award">Shortlist</td>
+                        <td class="col-proj">Sample Project</td>
+                        <td class="col-brand">Sample Brand</td>
+                    </tr>
+                    <tr>
+                        <td class="col-show">One Show</td>
+                        <td class="col-award">Merit</td>
+                        <td class="col-proj">Sample Project</td>
+                        <td class="col-brand">Sample Brand</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <a href="index.html" class="footer-back">Return to Index</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
