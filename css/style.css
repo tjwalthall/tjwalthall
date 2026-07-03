@@ -782,6 +782,38 @@ footer {
     }
 }
 
+
+
+/* Mobile project nav: keep desktop labels, use compact theme icon on small screens */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-sm);
+        font-size: var(--text-sm);
+        letter-spacing: 0.06em;
+    }
+
+    .back-btn {
+        white-space: nowrap;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .theme-toggle {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        font-size: 0;
+        letter-spacing: 0.06em;
+    }
+
+    .theme-toggle::after {
+        content: "[ ◐ ]";
+        font-size: var(--text-sm);
+    }
+}
+
 /* ==========================================================================
    ACCESSIBILITY
    ========================================================================== */
